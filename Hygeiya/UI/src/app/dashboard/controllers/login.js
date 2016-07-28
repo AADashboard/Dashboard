@@ -19,7 +19,7 @@
         login.apiup = false;
         login.invalidUsernamePassword = false;
 
-
+        login.loginPage= loginPage;	
         //public methods
         login.doLogin = doLogin;
         login.doSignup = doSignup;
@@ -56,10 +56,15 @@
                 $cookies.authenticated = true;
                 $cookies.username = document.lg.id.value;
 
-                $location.path('/site');
+                $location.path('/chooseMetric');
             }
         }
 
+        function loginPage()
+        {
+        	console.log("called")
+        	$location.path('/login');
+        }
         function doSignup() {
             console.log("In signup");
             $location.path('/signup');

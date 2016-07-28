@@ -26,9 +26,13 @@
         ctrl.open = open;
         ctrl.logout = logout;
         ctrl.admin = admin;
-        ctrl.setType = setType;
+        ctrl.setType = "team";
         ctrl.filterNotOwnedList = filterNotOwnedList;
         ctrl.filterDashboards = filterDashboards;
+        
+        ctrl.selectOpt= selectOpt;
+        ctrl.indi= indi;
+        ctrl.team= team;
 
         if (ctrl.username === 'admin') {
             ctrl.myadmin = true;
@@ -51,8 +55,9 @@
             // request my dashboards
             dashboardData.mydashboard(ctrl.username).then(processMyDashboardResponse, processMyDashboardError);
         })();
-
+        
         function setType(type) {
+        	
             ctrl.dashboardType = type;
         }
 
@@ -173,6 +178,36 @@
             console.log("size after reduction  is:" + uniqueArray.length);
             ctrl.dashboards = uniqueArray;
         }
+        
+        //customization code 
+        
+       
+       // function 
+        
+        function selectOpt()
+        {
+        	console.log("callled");
+        	$scope.mod=$modal.open({
+                templateUrl: 'app/dashboard/views/chooseDashboard.html',
+                controller: 'SiteController',
+                controllerAs: 'site'
+            });
+        }
+        
+        function team()
+        {
+        	$scope.mod.close();
+        	
+        }
+        $scope.uid=1;
+        function indi(dashboardId)
+        {
+        	
+        	$location.path('/indivudial/'+dashboardId);
+        	
+        }
+     
+        
     }
 
 

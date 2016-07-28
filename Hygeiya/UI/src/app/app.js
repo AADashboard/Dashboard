@@ -96,7 +96,7 @@ var localStorageSupported = (function () {
                 })
                 //login
 
-                .when('/',{
+                .when('/login',{
                   templateUrl: 'app/dashboard/views/login.html',
                   controller: 'LoginController',
                   controllerAs: 'login'
@@ -107,6 +107,22 @@ var localStorageSupported = (function () {
                   controller: 'SignupController',
                   controllerAs: 'signup'
                 })
+                .when('/',{
+                  templateUrl: 'app/dashboard/views/welcome.html',
+                  controller: 'LoginController',
+                  controllerAs: 'login'
+                })
+                .when('/chooseMetric', {
+                    templateUrl: 'app/dashboard/views/chooseMetric.html',
+                    controller: 'SiteController',
+                    controllerAs: 'ctrl'
+                })
+                .when('/indivudial/:uid', {
+                	  templateUrl: 'app/dashboard/views/site.html',
+                      controller: 'SiteController',
+                      controllerAs: 'ctrl'                        
+                })
+                
                 .otherwise({
                     redirectTo: '/'
                 });
